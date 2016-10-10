@@ -1,24 +1,51 @@
-tables = ActiveRecord::Base.connection.tables
+# Rails 4 = ActiveRecord::Base
+# Rails 5 = ApplicationRecord
 
-tables.each_with_index do |table, index|
-  klass = table.class_name
-  puts klass.column_names
+# Post.reflections["comments"].table_name # => "comments"
+# Post.reflections["comments"].macro # => :has_many
+# Post.reflections["comments"].foreign_key # => "message_id"
+
+def get_rails_version
+  Rails::VERSION::STRING[0]
 end
 
-# Add all Models
-classes = []
-ObjectSpace.each_object(Class) do |c|
-  classes << c if c.superclass == ActiveRecord::Base
+def print_all_models version
+  if ActiveRecord::Base.subclasses.size > 0
+    # Rails 4
+    if version == "4"
+      models = ObjectSpace.each_object(Class).select { |o| o.superclass == ActiveRecord::Base }
+
+      models.each do |model|
+        puts model
+        model.reflections.keys.each do |key|
+          puts "\t#{model.reflections[key].macro} #{key.capitalize} #{model.reflections[key].foreign_key}"
+        end
+      end
+    # Rails 5
+    elsif version == "5"
+      models = ObjectSpace.each_object(Class).select { |o| o.superclass == ApplicationRecord }
+
+      models.each do |model|
+        puts model
+        model.reflections.keys.each do |key|
+            puts "\t#{model.reflections[key].macro} #{key.capitalize} #{model.reflections[key].foreign_key}"
+        end
+      end
+    end
+  else
+    puts "There are no any models in this project!"
+  end
 end
 
-classes[].reflections.keys.each do |key|
-  Post.reflections["comments"].table_name # => "comments"
-  Post.reflections["comments"].macro # => :has_many
-  Post.reflections["comments"].foreign_key # => "message_id"
+def print_all_tables version
+  # Rails 4
+  if version == "4"
+    tables = ActiveRecord::Base.connection.tables
+
+    tables.each_with_index do |table, index|
+      puts table.class_name.column_names
+    end
+  end
 end
 
-classes[0]
-classes[0].reflections
-# cards
-classes[0].reflections["cards"].macro
-# :has_many
+print_all_models get_rails_version
