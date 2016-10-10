@@ -11,25 +11,20 @@ end
 
 def print_all_models version
   if ActiveRecord::Base.subclasses.size > 0
-    # Rails 4
+    models = []
+
     if version == "4"
+      # Rails 4
       models = ObjectSpace.each_object(Class).select { |o| o.superclass == ActiveRecord::Base }
-
-      models.each do |model|
-        puts model
-        model.reflections.keys.each do |key|
-          puts "\t#{model.reflections[key].macro} #{key.capitalize} #{model.reflections[key].foreign_key}"
-        end
-      end
-    # Rails 5
     elsif version == "5"
+      # Rails 5
       models = ObjectSpace.each_object(Class).select { |o| o.superclass == ApplicationRecord }
+    end
 
-      models.each do |model|
-        puts model
-        model.reflections.keys.each do |key|
-            puts "\t#{model.reflections[key].macro} #{key.capitalize} #{model.reflections[key].foreign_key}"
-        end
+    models.each do |model|
+      puts model
+      model.reflections.keys.each do |key|
+        puts "\t#{model.reflections[key].macro} #{key.capitalize} #{model.reflections[key].foreign_key}"
       end
     end
   else
