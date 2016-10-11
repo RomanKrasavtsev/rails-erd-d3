@@ -6,17 +6,17 @@
 # Post.reflections["comments"].foreign_key # => "message_id"
 
 def get_rails_version
-  Rails::VERSION::STRING[0]
+  Rails::VERSION::MAJOR
 end
 
 def print_all_models version
   if ActiveRecord::Base.subclasses.size > 0
     models = []
 
-    if version == "4"
+    if version == 4
       # Rails 4
       models = ObjectSpace.each_object(Class).select { |o| o.superclass == ActiveRecord::Base }
-    elsif version == "5"
+    elsif version == 5
       # Rails 5
       models = ObjectSpace.each_object(Class).select { |o| o.superclass == ApplicationRecord }
     end
@@ -33,8 +33,8 @@ def print_all_models version
 end
 
 def print_all_tables version
-  # Rails 4
-  if version == "4"
+  if version == 4
+    # Rails 4
     tables = ActiveRecord::Base.connection.tables
 
     tables.each_with_index do |table, index|
