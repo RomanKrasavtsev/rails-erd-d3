@@ -48,6 +48,9 @@ module Rails
         end
       end
 
+      def print_all_attributes
+      end
+
       print_all_models get_rails_version
     end
   end
