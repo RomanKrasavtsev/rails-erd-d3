@@ -8,4 +8,10 @@ describe Rails::Erd::D3 do
   it "returns a Rails major version" do
     expect(Rails::VERSION::MAJOR).to eq(Rails::Erd::D3.get_rails_version)
   end
+
+  it "returns all tables" do
+  end
+
+  it "returns all attributes of a table" do
+  end
 end
