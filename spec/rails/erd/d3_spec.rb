@@ -5,7 +5,7 @@ describe Rails::Erd::D3 do
     expect(Rails::Erd::D3::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  it "returns a Rails major version" do
+    expect(Rails::VERSION::MAJOR).to eq(Rails::Erd::D3.get_rails_version)
   end
 end
