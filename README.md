@@ -4,10 +4,6 @@ Gem is under active development.
 
 Create entity–relationship diagram with D3.js for your Rails application.
 
-Put your Ruby code in the file `lib/rails/erd/d3`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
