@@ -1,10 +1,6 @@
 require 'json'
 
 class RailsErdD3
-  # Post.reflections["comments"].table_name # => "comments"
-  # Post.reflections["comments"].macro # => :has_many
-  # Post.reflections["comments"].foreign_key # => "message_id"
-
   def self.get_rails_version
     Rails::VERSION::MAJOR
   end
@@ -200,14 +196,35 @@ class RailsErdD3
                         <h4 class='modal-title'>#{model.name.capitalize}</h4>
                       </div>
                       <div class='modal-body'>
-                        <p>One fine body&hellip;</p>
-                      </div>
-                      <div class='modal-footer'>
-                        <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>"
+                      <table class='table table-hover'>
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>name</th>
+                            <th>macro</th>
+                            <th>foreign_key</th>
+                          </tr>
+                        </thead>
+                        <tbody>"
+
+      model.reflections.each_with_index do |r, index|
+        modals += "<tr>"\
+                    "<th>#{index + 1}</th>"\
+                    "<td>#{r[0].capitalize}</td>"\
+                    "<td>#{model.reflections[r[0]].macro}</td>"\
+                    "<td>#{model.reflections[r[0]].foreign_key}</td>"\
+                  "</tr>"
+      end
+
+      modals += "</tbody>
+                </table>
+              </div>
+              <div class='modal-footer'>
+                <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+              </div>
+            </div>
+          </div>
+        </div>"
     end
 
     modals
