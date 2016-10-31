@@ -5,7 +5,6 @@ require 'rails/erd/d3/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "rails-erd-d3"
-  spec.version       = Rails::Erd::D3::VERSION
   spec.authors       = ["Roman Krasavtsev"]
   spec.email         = ["mr.krasavtsev@gmail.com"]
 
