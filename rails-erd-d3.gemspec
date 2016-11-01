@@ -1,12 +1,12 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "rails-erd-d3"
   spec.authors       = ["Roman Krasavtsev"]
   spec.email         = ["mr.krasavtsev@gmail.com"]
-  spec.version       = "0.0.1"
+  spec.version       = "0.0.2"
   spec.summary       = "Entity–relationship diagram with D3.js for Rails application"
   spec.description   = "This gem creates entity–relationship diagram with D3.js for your Rails application"
   spec.homepage      = "https://github.com/RomanKrasavtsev/rails-erd-d3"
