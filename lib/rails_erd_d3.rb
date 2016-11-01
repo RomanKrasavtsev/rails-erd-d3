@@ -208,11 +208,12 @@ class RailsErdD3
                         <tbody>"
 
       model.reflections.each_with_index do |r, index|
+        name = r[0]
         modals += "<tr>"\
                     "<th>#{index + 1}</th>"\
-                    "<td>#{r[0].capitalize}</td>"\
-                    "<td>#{model.reflections[r[0]].macro}</td>"\
-                    "<td>#{model.reflections[r[0]].foreign_key}</td>"\
+                    "<td>#{name.capitalize}</td>"\
+                    "<td>#{model.reflections[name].macro}</td>"\
+                    "<td>#{model.reflections[name].foreign_key}</td>"\
                   "</tr>"
       end
 
