@@ -43,7 +43,7 @@ class RailsErdD3
     data.to_json
   end
 
-  def self.create_erd
+  def self.create
     file = File.new("erd.html", "w")
     file.puts("
       <!DOCTYPE HTML>
