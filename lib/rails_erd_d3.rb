@@ -1,4 +1,4 @@
-require 'json'
+require "json"
 
 class RailsErdD3
   def self.get_rails_version
@@ -15,7 +15,6 @@ class RailsErdD3
       klass = ApplicationRecord
     end
 
-    Rails.application.eager_load!
     @@models = ObjectSpace.each_object(Class).select { |o| o.superclass == klass } || []
   end
 
@@ -44,6 +43,8 @@ class RailsErdD3
   end
 
   def self.create
+    Rails.application.eager_load!
+
     file = File.new("erd.html", "w")
     file.puts("
       <!DOCTYPE HTML>
