@@ -15,7 +15,7 @@ gem 'rails-erd-d3'
 And then execute for creating file erd.html:
 
     $ rails c
-    RailsErdD3.create
+    > RailsErdD3.create
 
 ## Contributing
 
