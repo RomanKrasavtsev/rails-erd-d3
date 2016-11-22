@@ -29,4 +29,4 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ## Author
 
-Roman Krasavtsev, [@romankrasavtsev](https://twitter.com/romankrasavtsev)
+[Roman Krasavtsev](https://github.com/RomanKrasavtsev), [@romankrasavtsev](https://twitter.com/romankrasavtsev)
