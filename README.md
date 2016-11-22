@@ -10,7 +10,7 @@ Add this line to your application's Gemfile:
 
 ```ruby
 group :development do
-  gem 'rails-erd-d3'
+  gem "rails-erd-d3"
 end
 ```
 
