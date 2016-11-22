@@ -19,6 +19,18 @@ And then execute for creating file erd.html:
     $ rails c
     > RailsErdD3.create
 
+## Todo
+
+- Add message after creating
+- Sort nodes by label
+- Check all associations
+    - belongs_to
+    - has_one
+    - has_many
+    - has_many :through
+    - has_one :through
+    - has_and_belongs_to_many
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/RomanKrasavtsev/rails-erd-d3.
