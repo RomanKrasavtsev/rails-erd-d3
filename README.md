@@ -1,6 +1,6 @@
-# Rails-ERD-D3
+[![Gem Version](https://badge.fury.io/rb/rails-erd-d3.svg)](https://badge.fury.io/rb/rails-erd-d3)
 
-Gem is under active development.
+# Rails-ERD-D3
 
 Create entity–relationship diagram with D3.js for your Rails application.
 
