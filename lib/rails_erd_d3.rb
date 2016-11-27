@@ -26,15 +26,18 @@ class RailsErdD3
     models_list = {}
 
     @@models.each_with_index do |model, index|
-      models_list[model.name] = index
+      models_list[model.model_name.plural.capitalize] = index
     end
 
     @@models.each_with_index do |model, index|
-      name = model.name.capitalize
+      name = model.model_name.plural.capitalize
 
       nodes << { label: name, r: 30 }
       model.reflections.keys.each do |key|
-        links << { source: models_list[name], target: models_list[key.capitalize] }
+        links << {
+          source: models_list[name],
+          target: models_list[key[1].plural_name.capitalize]
+        }
       end
     end
 
