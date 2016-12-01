@@ -30,6 +30,10 @@ And then execute for creating file erd.html:
     - has_many :through
     - has_one :through
     - has_and_belongs_to_many
+- Hide model
+- Show model attributes
+- Safe as jpg, png
+- Dependent destroy
 
 ## Contributing
 
