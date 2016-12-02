@@ -21,22 +21,21 @@ class RailsErdD3
   def self.get_data
     get_all_models
 
-    nodes = []
-    links = []
     models_list = {}
-
     @@models.each_with_index do |model, index|
       models_list[model.model_name.plural.capitalize] = index
     end
 
-    @@models.each_with_index do |model, index|
+    nodes = []
+    links = []
+    @@models.each do |model|
       name = model.model_name.plural.capitalize
 
       nodes << { label: name, r: 30 }
       model.reflections.keys.each do |key|
         links << {
           source: models_list[name],
-          target: models_list[key[1].plural_name.capitalize]
+          target: models_list[key.pluralize.capitalize]
         }
       end
     end
