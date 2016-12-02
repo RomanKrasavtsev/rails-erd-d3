@@ -21,12 +21,11 @@ And then execute for creating file erd.html:
 
 ## Todo
 
-- Add message after creating
 - Sort nodes by label
 - Check all associations
-    - belongs_to
-    - has_one
-    - has_many
+    - [X] belongs_to
+    - [X] has_one
+    - [x] has_many
     - has_many :through
     - has_one :through
     - has_and_belongs_to_many

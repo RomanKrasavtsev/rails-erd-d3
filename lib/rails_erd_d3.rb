@@ -1,4 +1,5 @@
 require "json"
+require "erb"
 
 class RailsErdD3
   def self.get_rails_version
@@ -6,8 +7,6 @@ class RailsErdD3
   end
 
   def self.get_all_models
-    version = get_rails_version
-
     case get_rails_version
     when 4
       klass = ActiveRecord::Base
@@ -67,14 +66,12 @@ class RailsErdD3
   private
 
   def self.get_head
-    "<head>"\
-      "<title>Rails-ERD-D3</title>"\
-      "<meta charset='utf-8'>"\
-      "<script src='https://code.jquery.com/jquery-3.1.1.min.js' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' crossorigin='anonymous'></script>"\
-      "<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.3.0/d3.min.js'></script>"\
-      "<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'></script>"\
-      "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>"\
-    "</head>"
+    File.read(
+      File.expand_path(
+        "templates/head.html",
+        File.dirname(__FILE__)
+      )
+    )
   end
 
   def self.get_nav
@@ -209,16 +206,18 @@ class RailsErdD3
                         "<h4 class='modal-title'>#{name}</h4>"\
                       "</div>"\
                       "<div class='modal-body'>"\
-                        "<table class='table table-hover'>"\
-                          "<thead>"\
-                            "<tr>"\
-                              "<th>#</th>"\
-                              "<th>name</th>"\
-                              "<th>macro</th>"\
-                              "<th>foreign_key</th>"\
-                            "</tr>"\
-                          "</thead>"\
-                          "<tbody>"
+                        "<div class='panel panel-primary'>"\
+                          "<div class='panel-heading'>Associations</div>"\
+                          "<table class='table table-hover'>"\
+                            "<thead>"\
+                              "<tr>"\
+                                "<th>#</th>"\
+                                "<th>name</th>"\
+                                "<th>macro</th>"\
+                                "<th>foreign_key</th>"\
+                              "</tr>"\
+                            "</thead>"\
+                            "<tbody>"
 
       model.reflections.each_with_index do |r, index|
         name = r[0]
@@ -230,16 +229,17 @@ class RailsErdD3
                   "</tr>"
       end
 
-      modals += "</tbody>"
-                "</table>"\
-              "</div>"\
-              "<div class='modal-footer'>"\
-                "<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"\
-              "</div>"\
+      modals += "</tbody>"\
+              "</table>"\
             "</div>"\
           "</div>"\
-        "</div>"
-  end
+        "<div class='modal-footer'>"\
+          "<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"\
+        "</div>"\
+      "</div>"\
+    "</div>"\
+  "</div>"
+    end
 
     modals
   end
