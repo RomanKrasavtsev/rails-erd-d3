@@ -75,26 +75,12 @@ class RailsErdD3
   end
 
   def self.get_nav
-    "<nav class='navbar navbar-default' style='background-color: #337ab7;'>"\
-      "<div class='container'>"\
-        "<div class='navbar-header'>"\
-          "<div class='navbar-brand'>"\
-            "<a href='https://github.com/RomanKrasavtsev/rails-erd-d3' target='_blank' style='color: white;'>"\
-              "Rails-ERD-D3"\
-            "</a>"\
-          "</div>"\
-        "</div>"\
-        "<div class='collapse navbar-collapse'>"\
-          "<ul class='nav navbar-nav navbar-right'>"\
-            "<li>"\
-              "<a href='https://github.com/romankrasavtsev' target='_blank' style='color: white;'>"\
-                "&copy; 2016 Roman Krasavtsev"\
-              "</a>"\
-            "</li>"\
-          "</ul>"\
-        "</div>"\
-      "</div>"\
-    "</nav>"
+    File.read(
+      File.expand_path(
+        "templates/nav.html",
+        File.dirname(__FILE__)
+      )
+    )
   end
 
   def self.get_d3
