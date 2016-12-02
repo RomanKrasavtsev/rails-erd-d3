@@ -84,100 +84,14 @@ class RailsErdD3
   end
 
   def self.get_d3
-    "<script>
-  var data = #{get_data};
-
-  var width = window.innerWidth
-    || document.documentElement.clientWidth
-    || document.body.clientWidth;
-  var height = window.innerHeight
-    || document.documentElement.clientHeight
-    || document.body.clientHeight;
-
-  var colorScale = d3.scaleOrdinal(d3.schemeCategory20);
-
-  var svg = d3.select('#erd').append('svg')
-    .attr('height', height)
-    .attr('width', width)
-    .style('background', 'white');
-
-  var simulation = d3.forceSimulation()
-    .force('link', d3.forceLink().id(function(d) { return d.index }))
-    .force('collide',d3.forceCollide( function(d){return d.r + 20 }).iterations(30) )
-    .force('charge', d3.forceManyBody())
-    .force('center', d3.forceCenter(width / 2, height / 2))
-    .force('y', d3.forceY(0))
-    .force('x', d3.forceX(0));
-
-  var link = svg.append('g')
-    .classed('links', true)
-    .selectAll('line')
-    .data(data.links)
-    .enter()
-    .append('line')
-    .attr('stroke', 'black');
-
-  var node = svg.selectAll('.node')
-    .data(data.nodes)
-    .enter()
-    .append('g')
-    .classed('node', true)
-    .style('cursor', 'pointer')
-    .attr('data-toggle', 'modal')
-    .attr('data-target', function(d, i){ return '#' + data.nodes[i].label })
-    .call(d3.drag()
-      .on('start', dragstarted)
-      .on('drag', dragged)
-      .on('end', dragended));
-
-  node.append('circle')
-    .classed('circle', true)
-    .attr('r', function(d){  return d.r })
-    .attr('fill', function(d, i){ return colorScale(i) });
-
-  node.append('text')
-    .classed('text', true)
-    .text(function(d) {
-      return d.label;
-    });
-
-  var ticked = function() {
-      link
-        .attr('x1', function(d) { return d.source.x; })
-        .attr('y1', function(d) { return d.source.y; })
-        .attr('x2', function(d) { return d.target.x; })
-        .attr('y2', function(d) { return d.target.y; });
-
-      node
-        .attr('transform', function(d) {
-          return 'translate(' + [d.x, d.y] + ')';
-        });
-  }
-
-  simulation.nodes(data.nodes)
-      .on('tick', ticked);
-
-  simulation.force('link')
-      .links(data.links);
-
-  function dragstarted(d) {
-      if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-      d.fx = d.x;
-      d.fy = d.y;
-  }
-
-  function dragged(d) {
-      d.fx = d3.event.x;
-      d.fy = d3.event.y;
-  }
-
-  function dragended(d) {
-      if (!d3.event.active) simulation.alphaTarget(0);
-      d.fx = null;
-      d.fy = null;
-  }
-</script>
-"
+    ERB.new(
+      File.read(
+        File.expand_path(
+          "templates/d3.html.erb",
+          File.dirname(__FILE__)
+        )
+      )
+    ).result(binding)
   end
 
   def self.get_modals
