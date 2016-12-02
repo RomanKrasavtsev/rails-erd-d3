@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name          = "rails-erd-d3"
   spec.authors       = ["Roman Krasavtsev"]
   spec.email         = ["mr.krasavtsev@gmail.com"]
-  spec.version       = "0.0.11"
+  spec.version       = "0.0.12"
   spec.summary       = "Entity–relationship diagram with D3.js for Rails application"
   spec.description   = "This gem creates entity–relationship diagram with D3.js for your Rails application"
   spec.homepage      = "https://github.com/RomanKrasavtsev/rails-erd-d3"

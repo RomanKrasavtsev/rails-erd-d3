@@ -62,23 +62,28 @@ class RailsErdD3
       </html>
     ")
     file.close
+
+    puts "File erd.html was successfully created!"
   end
 
   private
 
   def self.get_head
-    "<head>
+    "
+    <head>
       <title>ERD</title>
       <meta charset='utf-8'>
       <script   src='https://code.jquery.com/jquery-3.1.1.min.js' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' crossorigin='anonymous'></script>
       <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.3.0/d3.min.js'></script>
       <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'></script>
       <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>
-    </head>"
+    </head>
+    "
   end
 
   def self.get_nav
-    "<nav class='navbar navbar-default'>
+    "
+    <nav class='navbar navbar-default'>
       <div class='container-fluid'>
         <div class='navbar-header'>
           <div class='navbar-brand'>
@@ -88,11 +93,13 @@ class RailsErdD3
           </div>
         </div>
       </div>
-    </nav>"
+    </nav>
+    "
   end
 
   def self.get_d3
-    "<script>
+    "
+    <script>
       var data = #{get_data};
 
       var width = window.innerWidth
@@ -184,19 +191,21 @@ class RailsErdD3
           d.fx = null;
           d.fy = null;
       }
-    </script>"
+    </script>
+    "
   end
 
   def self.get_modals
     modals = ""
     @@models.each do |model|
+      name = model.model_name.plural.capitalize
       modals += "
-      <div class='modal fade' id='#{model.name.capitalize}' tabindex='-1' role='dialog'>
+      <div class='modal fade' id='#{name}' tabindex='-1' role='dialog'>
         <div class='modal-dialog' role='document'>
           <div class='modal-content'>
             <div class='modal-header'>
               <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-              <h4 class='modal-title'>#{model.name.capitalize}</h4>
+              <h4 class='modal-title'>#{name}</h4>
             </div>
             <div class='modal-body'>
               <table class='table table-hover'>
@@ -229,8 +238,7 @@ class RailsErdD3
             </div>
           </div>
         </div>
-      </div>
-      "
+      </div>"
   end
 
     modals
