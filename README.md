@@ -22,6 +22,7 @@ And then execute for creating file erd.html:
 
 ## Todo
 
+- Optimize get_modals
 - Sort nodes by label
 - Check all associations
     - [X] belongs_to
