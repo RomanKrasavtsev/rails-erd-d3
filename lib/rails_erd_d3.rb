@@ -162,8 +162,7 @@ class RailsErdD3
             });
       }
 
-      simulation
-          .nodes(data.nodes)
+      simulation.nodes(data.nodes)
           .on('tick', ticked);
 
       simulation.force('link')
@@ -191,24 +190,25 @@ class RailsErdD3
   def self.get_modals
     modals = ""
     @@models.each do |model|
-      modals += "<div class='modal fade' id='#{model.name.capitalize}' tabindex='-1' role='dialog'>
-                  <div class='modal-dialog' role='document'>
-                    <div class='modal-content'>
-                      <div class='modal-header'>
-                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                        <h4 class='modal-title'>#{model.name.capitalize}</h4>
-                      </div>
-                      <div class='modal-body'>
-                      <table class='table table-hover'>
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>name</th>
-                            <th>macro</th>
-                            <th>foreign_key</th>
-                          </tr>
-                        </thead>
-                        <tbody>"
+      modals += "
+      <div class='modal fade' id='#{model.name.capitalize}' tabindex='-1' role='dialog'>
+        <div class='modal-dialog' role='document'>
+          <div class='modal-content'>
+            <div class='modal-header'>
+              <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+              <h4 class='modal-title'>#{model.name.capitalize}</h4>
+            </div>
+            <div class='modal-body'>
+              <table class='table table-hover'>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>name</th>
+                    <th>macro</th>
+                    <th>foreign_key</th>
+                  </tr>
+                </thead>
+                <tbody>"
 
       model.reflections.each_with_index do |r, index|
         name = r[0]
@@ -220,16 +220,18 @@ class RailsErdD3
                   "</tr>"
       end
 
-      modals += "</tbody>
-                </table>
-              </div>
-              <div class='modal-footer'>
-                <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
-              </div>
+      modals += "
+                </tbody>
+              </table>
+            </div>
+            <div class='modal-footer'>
+              <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
             </div>
           </div>
-        </div>"
-    end
+        </div>
+      </div>
+      "
+  end
 
     modals
   end
