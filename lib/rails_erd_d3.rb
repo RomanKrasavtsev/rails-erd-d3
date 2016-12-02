@@ -200,7 +200,7 @@ class RailsErdD3
   def self.get_modals
     modals = ""
     @@models.each do |model|
-      name = model.model_name.plural.capitalize
+      name = model.name.capitalize
       modals += "<div class='modal fade' id='#{name}' tabindex='-1' role='dialog'>"\
                   "<div class='modal-dialog' role='document'>"\
                     "<div class='modal-content'>"\
