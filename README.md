@@ -24,6 +24,7 @@ And then execute for creating file erd.html:
 ## Todo
 
 - Optimize get_modals
+- Change button and header colour
 - Sort nodes by label
 - Check associations
     - [X] belongs_to
