@@ -28,7 +28,7 @@ class RailsErdD3
     nodes = []
     links = []
     @@models.each do |model|
-      nodes << { label: model.name.capitalize, r: 30 }
+      nodes << { label: model.name, r: 30 }
 
       model.reflections.each do |refl_name, refl_data|
         next if refl_data.options[:polymorphic]
