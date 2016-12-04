@@ -100,7 +100,7 @@ class RailsErdD3
   def self.get_modals
     modals = ""
     @@models.each do |model|
-      name = model.name.capitalize
+      name = model.name
       modals += "<div class='modal fade' id='#{name}' tabindex='-1' role='dialog'>"\
                   "<div class='modal-dialog' role='document'>"\
                     "<div class='modal-content'>"\
@@ -126,7 +126,7 @@ class RailsErdD3
         name = r[0]
         modals += "<tr>"\
                     "<th>#{index + 1}</th>"\
-                    "<td>#{name.capitalize}</td>"\
+                    "<td>#{name.camelize}</td>"\
                     "<td>#{model.reflections[name].macro}</td>"\
                     "<td>#{model.reflections[name].foreign_key}</td>"\
                   "</tr>"
