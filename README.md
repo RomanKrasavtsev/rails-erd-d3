@@ -25,13 +25,14 @@ And then execute for creating file erd.html:
 
 - Optimize get_modals
 - Sort nodes by label
-- Check all associations
+- Check associations
     - [X] belongs_to
     - [X] has_one
     - [x] has_many
     - has_many :through
     - has_one :through
     - has_and_belongs_to_many
+    - Polymorphic associations
 - Hide model
 - Show model attributes
 - Safe as jpg, png
