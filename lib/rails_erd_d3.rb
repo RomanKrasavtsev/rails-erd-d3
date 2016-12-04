@@ -29,10 +29,13 @@ class RailsErdD3
     links = []
     @@models.each do |model|
       nodes << { label: model.name.capitalize, r: 30 }
-      model.reflections.keys.each do |key|
+
+      model.reflections.each do |refl_name, refl_data|
+        next if refl_data.options[:polymorphic]
+        refl_model = (refl_data.options[:class_name] || refl_name).underscore
         links << {
           source: models_list[model.model_name.plural.capitalize],
-          target: models_list[key.pluralize.capitalize]
+          target: models_list[refl_model.pluralize.capitalize]
         }
       end
     end
