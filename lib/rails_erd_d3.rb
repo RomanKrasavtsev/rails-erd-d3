@@ -28,11 +28,14 @@ class RailsErdD3
     nodes = []
     links = []
     @@models.each do |model|
-      nodes << { label: model.name.capitalize, r: 30 }
-      model.reflections.keys.each do |key|
+      nodes << { label: model.name, r: 30 }
+
+      model.reflections.each do |refl_name, refl_data|
+        next if refl_data.options[:polymorphic]
+        refl_model = (refl_data.options[:class_name] || refl_name).underscore
         links << {
           source: models_list[model.model_name.plural.capitalize],
-          target: models_list[key.pluralize.capitalize]
+          target: models_list[refl_model.pluralize.capitalize]
         }
       end
     end
@@ -97,7 +100,7 @@ class RailsErdD3
   def self.get_modals
     modals = ""
     @@models.each do |model|
-      name = model.name.capitalize
+      name = model.name
       modals += "<div class='modal fade' id='#{name}' tabindex='-1' role='dialog'>"\
                   "<div class='modal-dialog' role='document'>"\
                     "<div class='modal-content'>"\
@@ -123,7 +126,7 @@ class RailsErdD3
         name = r[0]
         modals += "<tr>"\
                     "<th>#{index + 1}</th>"\
-                    "<td>#{name.capitalize}</td>"\
+                    "<td>#{name.camelize}</td>"\
                     "<td>#{model.reflections[name].macro}</td>"\
                     "<td>#{model.reflections[name].foreign_key}</td>"\
                   "</tr>"
