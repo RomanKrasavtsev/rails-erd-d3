@@ -7,6 +7,9 @@
 
 Create entity–relationship diagram with D3.js for your Rails application.
 
+![Rails-ERD-D3](https://github.com/RomanKrasavtsev/rails-erd-d3/raw/master/rails-erd-d3.gif)
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
