@@ -23,12 +23,8 @@ And then execute for creating file erd.html:
 
 ## Todo
 
-- Optimize get_modals
-- Change button and header colour
-- Add to Gemfile for test environment
-  - activerecord
-  - sqlite3 (ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:")
 - Add tests
+  - ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 - Sort nodes by label
 - Check associations
     - [X] belongs_to
