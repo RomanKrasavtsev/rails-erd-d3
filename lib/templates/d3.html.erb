@@ -29,7 +29,7 @@
     .data(data.links)
     .enter()
     .append('line')
-    .attr('stroke', 'black');
+    .attr('stroke', function(d){return colorScale(d.color)});
 
   var node = svg.selectAll('.node')
     .data(data.nodes)
