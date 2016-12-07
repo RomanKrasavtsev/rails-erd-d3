@@ -2,6 +2,16 @@ require "json"
 require "erb"
 
 class RailsErdD3
+  ASSOCIATIONS = %w(
+    belongs_to
+    has_one
+    has_many
+    has_many_through
+    has_one_through
+    has_and_belongs_to_many
+    polymorphic
+  )
+
   def self.get_rails_version
     Rails::VERSION::MAJOR
   end
@@ -32,11 +42,13 @@ class RailsErdD3
 
       model.reflections.each do |refl_name, refl_data|
         next if refl_data.options[:polymorphic]
-        refl_model = (refl_data.options[:class_name] || refl_name).underscore
-
+        refl_model    = (refl_data.options[:class_name] || refl_name).underscore
+        association   = refl_data.macro.to_s + (refl_data.options[:through] ? '_through' : '')
+        color_index = ASSOCIATIONS.index(association)
         links << {
           source: models_list[model.model_name.plural.capitalize],
-          target: models_list[refl_model.pluralize.capitalize]
+          target: models_list[refl_model.pluralize.capitalize],
+          color:  color_index
         }
       end
     end
