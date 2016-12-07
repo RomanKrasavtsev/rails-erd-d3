@@ -1,7 +1,7 @@
+[![Build Status](https://travis-ci.org/RomanKrasavtsev/rails-erd-d3.svg?branch=master)](https://travis-ci.org/RomanKrasavtsev/rails-erd-d3)
 [![Gem Version](https://badge.fury.io/rb/rails-erd-d3.svg)](https://badge.fury.io/rb/rails-erd-d3)
 [![Code Climate](https://codeclimate.com/github/RomanKrasavtsev/rails-erd-d3/badges/gpa.svg)](https://codeclimate.com/github/RomanKrasavtsev/rails-erd-d3)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/RomanKrasavtsev/rails-erd-d3/master/LICENSE.txt)
-[![Build Status](https://travis-ci.org/RomanKrasavtsev/rails-erd-d3.svg?branch=master)](https://travis-ci.org/RomanKrasavtsev/rails-erd-d3)
 ![Downloads](http://ruby-gem-downloads-badge.herokuapp.com/rails-erd-d3?type=total)
 
 # Rails-ERD-D3
