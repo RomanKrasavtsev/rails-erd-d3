@@ -24,6 +24,8 @@ class RailsErdD3
       klass = ApplicationRecord
     end
 
+    Rails.application.eager_load!
+    klass.connection
     @@models = ObjectSpace.each_object(Class).select { |o| o.superclass == klass } || []
   end
 
@@ -58,8 +60,6 @@ class RailsErdD3
   end
 
   def self.create
-    Rails.application.eager_load!
-
     file = File.new("erd.html", "w")
     file.puts(
       "<!DOCTYPE HTML>"\

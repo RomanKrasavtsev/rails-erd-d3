@@ -33,7 +33,31 @@
               </tbody>
             </table>
           </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">Table Structure</div>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>name</th>
+                  <th>macro</th>
+                  <th>foreign_key</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% models.columns_hash.each_with_index do |k, v, index| %>
+                  <tr>
+                    <th><%= index + 1 %></th>
+                    <td><%= k %></td>
+                    <td><%= v.type %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
         </div>
