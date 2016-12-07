@@ -39,7 +39,6 @@ And then execute for creating file erd.html:
     - has_and_belongs_to_many
     - Polymorphic associations
 - Hide model
-- Show model attributes
 - Safe as jpg, png
 - Dependent destroy
 
