@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 require "rails_erd_d3"
-
+require ::File.expand_path('./config/environment')
 RailsErdD3.create
