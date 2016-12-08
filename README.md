@@ -12,7 +12,7 @@ Create entity–relationship diagram with D3.js for your Rails application.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add these lines to your application's Gemfile:
 
 ```ruby
 group :development do
@@ -23,13 +23,11 @@ end
 And then execute for creating file erd.html:
   
     $ bundle exec erd-d3
-   
 
 Or:
  
      $ rails c
      > RailsErdD3.create
-    
 
 ## Todo
 
