@@ -20,6 +20,11 @@ group :development do
 end
 ```
 
+Install gem:
+```bash
+     $ bundle install
+```
+
 And then execute for creating file erd.html:
   
     $ bundle exec erd-d3
