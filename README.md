@@ -21,18 +21,20 @@ end
 ```
 
 Install gem:
-```bash
-     $ bundle install
+```shall
+$ bundle install
 ```
 
 And then execute for creating file erd.html:
-  
-    $ bundle exec erd-d3
+```shall
+$ bundle exec erd-d3
+```
 
 Or:
- 
-     $ rails c
-     > RailsErdD3.create
+```shall
+$ rails c
+> RailsErdD3.create
+```
 
 ## Todo
 
