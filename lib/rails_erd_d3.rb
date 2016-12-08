@@ -42,6 +42,7 @@ class RailsErdD3
     @@models.each do |model|
       nodes << { label: model.name, r: 30 }
 
+      puts "generate data for #{model.name}"
       model.reflections.each do |refl_name, refl_data|
         next if refl_data.options[:polymorphic]
         refl_model    = (refl_data.options[:class_name] || refl_name).underscore
@@ -76,7 +77,7 @@ class RailsErdD3
     )
     file.close
 
-    "File erd.html was successfully created!"
+    puts "File erd.html was successfully created!"
   end
 
   private

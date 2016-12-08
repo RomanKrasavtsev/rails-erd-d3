@@ -25,6 +25,10 @@ And then execute for creating file erd.html:
     $ rails c
     > RailsErdD3.create
 
+Or from command line:
+
+    $ bundle exec erd-d3
+
 ## Todo
 
 - Add tests
