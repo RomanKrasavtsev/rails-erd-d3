@@ -64,3 +64,62 @@
     </div>
   </div>
 <% end %>
+
+<div class="modal fade" id="preferences" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">
+          Preferences
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="panel panel-primary">
+          <div class="panel-heading">Models</div>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>name</th>
+                <th>visible</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @@models.each_with_index do |model, index| %>
+                <tr>
+                  <th><%= index + 1 %></th>
+                  <td><%= model.name %></td>
+                  <td>
+                    <div class="checkbox">
+                      <label>
+                        <input class="visible" id="<%= model.name %>" type="checkbox" value="" checked>
+                      </label>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(".visible").click(function(){
+    var klass = $(this).attr("id");
+
+    if $(this).prop("checked"){
+      $(klass).hide();
+    }
+    else {
+      $(klass).show();
+    }
+  });
+</script>
