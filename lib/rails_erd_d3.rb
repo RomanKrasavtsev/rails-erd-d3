@@ -50,9 +50,14 @@ class RailsErdD3
         association = refl_data.macro.to_s + (refl_data.options[:through] ? "_through" : "")
         color_index = ASSOCIATIONS.index(association)
 
+
+        targeted_model = refl_model
+        targeted_model = targeted_model[1..-1] if targeted_model.starts_with?('/')
+        targeted_model = targeted_model.tr('/', '_').pluralize.capitalize
+
         links << {
           source: models_list[model.model_name.plural.capitalize],
-          target: models_list[refl_model.pluralize.capitalize],
+          target: models_list[targeted_model],
           color:  color_index
         }
       end
