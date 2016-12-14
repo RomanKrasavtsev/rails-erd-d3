@@ -29,7 +29,7 @@
     .data(data.links)
     .enter()
     .append('line')
-    .attr('class', function(d, i) { return data.nodes[i].label })
+    .attr('class', function(d, i) { return return data.nodes[d.source].label + ' ' + data.nodes[d.target].label })
     .attr('stroke', function(d) { return colorScale(d.color) });
 
   var node = svg.selectAll('.node')

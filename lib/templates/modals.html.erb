@@ -115,11 +115,11 @@
   $(".visible").click(function(){
     var klass = $(this).attr("id");
 
-    if $(this).prop("checked"){
-      $(klass).hide();
+    if ($(this).prop("checked")){
+      $("." + klass).show();
     }
     else {
-      $(klass).show();
+      $("." + klass).hide();
     }
   });
 </script>
