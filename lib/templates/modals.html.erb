@@ -86,7 +86,7 @@
               </tr>
             </thead>
             <tbody>
-              <% @@models.each_with_index do |model, index| %>
+              <% @@models.sort_by { |model| model.name }.each_with_index do |model, index| %>
                 <tr>
                   <th><%= index + 1 %></th>
                   <td><%= model.name %></td>
