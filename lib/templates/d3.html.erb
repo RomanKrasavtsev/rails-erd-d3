@@ -17,7 +17,7 @@
 
   var simulation = d3.forceSimulation()
     .force('link', d3.forceLink().id(function(d) { return d.index }))
-    .force('collide',d3.forceCollide( function(d){return d.r + 20 }).iterations(30) )
+    .force('collide', d3.forceCollide(function(d) { return d.r + 20 }).iterations(30))
     .force('charge', d3.forceManyBody())
     .force('center', d3.forceCenter(width / 2, height / 2))
     .force('y', d3.forceY(0))
@@ -29,7 +29,8 @@
     .data(data.links)
     .enter()
     .append('line')
-    .attr('stroke', function(d){return colorScale(d.color)});
+    .attr('class', function(d, i) { return d.nodes[i].label })
+    .attr('stroke', function(d) { return colorScale(d.color) });
 
   var node = svg.selectAll('.node')
     .data(data.nodes)
@@ -38,7 +39,8 @@
     .classed('node', true)
     .style('cursor', 'pointer')
     .attr('data-toggle', 'modal')
-    .attr('data-target', function(d, i){ return '#' + data.nodes[i].label })
+    .attr('data-target', function(d, i) { return '#' + data.nodes[i].label })
+    .attr('class', function(d, i) { return d.nodes[i].label })
     .call(d3.drag()
       .on('start', dragstarted)
       .on('drag', dragged)
@@ -47,7 +49,7 @@
   node.append('circle')
     .classed('circle', true)
     .attr('r', function(d){  return d.r })
-    .attr('fill', function(d, i){ return colorScale(i) });
+    .attr('fill', function(d, i) { return colorScale(i) });
 
   node.append('text')
     .classed('text', true)
