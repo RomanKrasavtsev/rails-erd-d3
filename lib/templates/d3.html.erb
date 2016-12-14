@@ -29,7 +29,7 @@
     .data(data.links)
     .enter()
     .append('line')
-    .attr('class', function(d, i) { return d.nodes[i].label })
+    .attr('class', function(d, i) { return data.nodes[i].label })
     .attr('stroke', function(d) { return colorScale(d.color) });
 
   var node = svg.selectAll('.node')
@@ -39,8 +39,8 @@
     .classed('node', true)
     .style('cursor', 'pointer')
     .attr('data-toggle', 'modal')
-    .attr('data-target', function(d, i) { return '#' + data.nodes[i].label })
-    .attr('class', function(d, i) { return d.nodes[i].label })
+    .attr('data-target', function(d, i) { return '#' + d[i].label })
+    .attr('class', function(d, i) { return d[i].label })
     .call(d3.drag()
       .on('start', dragstarted)
       .on('drag', dragged)
