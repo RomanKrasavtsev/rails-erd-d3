@@ -8,7 +8,16 @@
 
 Create entity–relationship diagram with D3.js for your Rails application.
 
-![Rails-ERD-D3](https://github.com/RomanKrasavtsev/rails-erd-d3/raw/master/rails-erd-d3.gif)
+## Features
+Rails-ERD-D3 contains the following functionality:
+  - View models
+  ![Models](https://github.com/RomanKrasavtsev/rails-erd-d3/raw/master/images/models.png)
+  - Preferences where you could hide any models
+  ![Preferences](https://github.com/RomanKrasavtsev/rails-erd-d3/raw/master/images/preferences.png)
+  - View associations
+  ![Associations](https://github.com/RomanKrasavtsev/rails-erd-d3/raw/master/images/associations.png)
+  - View table structure
+  ![Table structure](https://github.com/RomanKrasavtsev/rails-erd-d3/raw/master/images/table_structure.png)
 
 ## Installation
 
@@ -27,13 +36,7 @@ $ bundle install
 
 And then execute for creating file erd.html:
 ```shall
-$ bundle exec erd-d3
-```
-
-Or:
-```shall
-$ rails c
-> RailsErdD3.create
+$ bundle exec rails-erd-d3
 ```
 
 ## Todo
@@ -49,7 +52,6 @@ $ rails c
     - has_one :through
     - has_and_belongs_to_many
     - Polymorphic associations
-- Hide model
 - Safe as jpg, png
 - Dependent destroy
 
