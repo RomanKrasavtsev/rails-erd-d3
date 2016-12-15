@@ -27,6 +27,7 @@ class RailsErdD3
     Rails.application.eager_load!
     klass.connection
     @@models = ObjectSpace.each_object(Class).select { |o| o.ancestors.include? klass } || []
+    @@models = @@models - [klass] if @@models.include? klass
   end
 
   def self.get_data
