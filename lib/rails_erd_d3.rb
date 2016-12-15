@@ -46,7 +46,7 @@ class RailsErdD3
       model.reflections.each do |refl_name, refl_data|
         next if refl_data.options[:polymorphic]
 
-        refl_model = (refl_data.options[:class_name] || refl_name).underscore
+        refl_model = (refl_data.options[:class_name] || refl_name).to_s.underscore
         association = refl_data.macro.to_s + (refl_data.options[:through] ? "_through" : "")
         color_index = ASSOCIATIONS.index(association)
 
