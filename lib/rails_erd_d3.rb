@@ -123,6 +123,7 @@ class RailsErdD3
     ).result(binding)
 
     puts "JS was successfully generated."
+    content
   end
 
   def self.get_modals
@@ -138,5 +139,6 @@ class RailsErdD3
     ).result(binding)
 
     puts "Modals were successfully generated."
+    content
   end
 end
