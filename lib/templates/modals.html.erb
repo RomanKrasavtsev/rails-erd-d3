@@ -16,8 +16,8 @@
                 <tr>
                   <th>#</th>
                   <th>name</th>
-                  <th>macro</th>
-                  <th>foreign_key</th>
+                  <th>type</th>
+                  <th>class_name</th>
                 </tr>
               </thead>
               <tbody>
@@ -27,7 +27,10 @@
                     <th><%= index + 1 %></th>
                     <td><%= name.camelize %></td>
                     <td><%= model.reflections[name].macro %></td>
-                    <td><%= model.reflections[name].foreign_key %></td>
+                    <td>
+                      <%= model.reflections[name].options[:class_name] %>
+                      <%= ", through: #{model.reflections[name].options[:through].to_s.capitalize}" if model.reflections[name].options[:through] %>
+                    </td>
                   </tr>
                 <% end %>
               </tbody>

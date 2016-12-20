@@ -64,7 +64,7 @@ class RailsErdD3
         }
       end
     end
-    puts "Done"
+    puts "Data were successfully generated."
 
     data = { nodes: nodes, links: links }
     data.to_json
@@ -122,7 +122,7 @@ class RailsErdD3
       )
     ).result(binding)
 
-    puts "Done"
+    puts "JS was successfully generated."
   end
 
   def self.get_modals
@@ -137,6 +137,6 @@ class RailsErdD3
       )
     ).result(binding)
 
-    puts "Done"
+    puts "Modals were successfully generated."
   end
 end
