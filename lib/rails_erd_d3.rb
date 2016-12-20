@@ -38,12 +38,14 @@ class RailsErdD3
       models_list[model.model_name.plural.capitalize] = index
     end
 
+    puts "Generating data..."
+
     nodes = []
     links = []
     @@models.each do |model|
       nodes << { label: model.name, r: 30 }
 
-      puts "Generate data for #{model.name}"
+      puts " - #{model.name}"
       model.reflections.each do |refl_name, refl_data|
         next if refl_data.options[:polymorphic]
 
@@ -51,10 +53,9 @@ class RailsErdD3
         association = refl_data.macro.to_s + (refl_data.options[:through] ? "_through" : "")
         color_index = ASSOCIATIONS.index(association)
 
-
         targeted_model = refl_model
-        targeted_model = targeted_model[1..-1] if targeted_model.starts_with?('/')
-        targeted_model = targeted_model.tr('/', '_').pluralize.capitalize
+        targeted_model = targeted_model[1..-1] if targeted_model.starts_with?("/")
+        targeted_model = targeted_model.tr("/", "_").pluralize.capitalize
 
         links << {
           source: models_list[model.model_name.plural.capitalize],
@@ -63,6 +64,7 @@ class RailsErdD3
         }
       end
     end
+    puts "Done"
 
     data = { nodes: nodes, links: links }
     data.to_json
@@ -91,7 +93,7 @@ class RailsErdD3
   private
 
   def self.get_head
-    File.read(
+    content = File.read(
       File.expand_path(
         "templates/head.html",
         File.dirname(__FILE__)
@@ -100,7 +102,7 @@ class RailsErdD3
   end
 
   def self.get_nav
-    File.read(
+    content = File.read(
       File.expand_path(
         "templates/nav.html",
         File.dirname(__FILE__)
@@ -109,7 +111,9 @@ class RailsErdD3
   end
 
   def self.get_d3
-    ERB.new(
+    puts "Generating JS..."
+
+    content = ERB.new(
       File.read(
         File.expand_path(
           "templates/d3.html.erb",
@@ -117,10 +121,14 @@ class RailsErdD3
         )
       )
     ).result(binding)
+
+    puts "Done"
   end
 
   def self.get_modals
-    ERB.new(
+    puts "Generating modals..."
+
+    content = ERB.new(
       File.read(
         File.expand_path(
           "templates/modals.html.erb",
@@ -128,5 +136,7 @@ class RailsErdD3
         )
       )
     ).result(binding)
+
+    puts "Done"
   end
 end
