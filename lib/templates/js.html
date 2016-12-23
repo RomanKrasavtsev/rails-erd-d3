@@ -1,0 +1,23 @@
+<script>
+  $(".visible").click(function(){
+    var klass = $(this).attr("id");
+
+    if ($(this).prop("checked")){
+      $("." + klass).show();
+    }
+    else {
+      $("." + klass).hide();
+    }
+  });
+
+  function rotate() {
+    if (svg.classed("rotated")) {
+      simulation.alphaTarget(0);
+      svg.classed("rotated", false);
+    }
+    else {
+      simulation.alphaTarget(0.4).restart();
+      svg.classed("rotated", true);
+    }
+  };
+</script>

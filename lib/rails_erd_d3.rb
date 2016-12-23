@@ -81,7 +81,8 @@ class RailsErdD3
           "<div id='erd'>"\
           "</div>"\
           "#{get_d3}"\
-          "#{get_modals}"\
+          "#{get_js}"\
+          "#{get_modals}"\          
         "</body>"\
       "</html>"
     )
@@ -124,6 +125,15 @@ class RailsErdD3
 
     puts "JS was successfully generated."
     content
+  end
+
+  def self.get_js
+    content = File.read(
+      File.expand_path(
+        "templates/js.html",
+        File.dirname(__FILE__)
+      )
+    )
   end
 
   def self.get_modals
