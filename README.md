@@ -49,16 +49,16 @@ $ bundle exec rails-erd-d3
 ## Todo
 - Freeze
   - On
-```
-node.call(d3.drag()
-      .on('start', dragstarted)
-      .on('drag', dragged)
-      .on('end', dragended)); 
-```
+    ```
+    node.call(d3.drag()
+          .on('start', dragstarted)
+          .on('drag', dragged)
+          .on('end', dragended)); 
+    ```
   - Off
-```
-node.call(d3.drag().on('drag', null))
-```  
+    ```
+    node.call(d3.drag().on('drag', null))
+    ```  
 - Add to link
 ```
   .attr('stroke-width', 2);
