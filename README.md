@@ -53,7 +53,7 @@ $ bundle exec rails-erd-d3
     node.call(d3.drag()
           .on('start', dragstarted)
           .on('drag', dragged)
-          .on('end', dragended)); 
+          .on('end', dragended));
     ```
   - Off
     ```
@@ -64,11 +64,6 @@ $ bundle exec rails-erd-d3
   .attr('stroke-width', 2);
 ```
 - Add link to another model in model window
-- Add rotation
-```
-  simulation.alphaTarget(0.4).restart();
-  simulation.alphaTarget(0);
-```
 - Add tests
   - ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 - Sort nodes by label
