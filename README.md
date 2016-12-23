@@ -47,6 +47,10 @@ $ bundle exec rails-erd-d3
 ```
 
 ## Todo
+- Add to link
+```
+  .attr('stroke-width', 2);
+```
 - Add link to another model in model window
 - Add rotation
 ```
