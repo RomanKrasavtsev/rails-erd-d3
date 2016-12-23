@@ -82,7 +82,7 @@ class RailsErdD3
           "</div>"\
           "#{get_d3}"\
           "#{get_js}"\
-          "#{get_modals}"\          
+          "#{get_modals}"\
         "</body>"\
       "</html>"
     )
