@@ -47,7 +47,12 @@ $ bundle exec rails-erd-d3
 ```
 
 ## Todo
-
+- Add link to another model in model window
+- Add rotation
+```
+  simulation.alphaTarget(0.4).restart();
+  simulation.alphaTarget(0);
+```
 - Add tests
   - ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 - Sort nodes by label
