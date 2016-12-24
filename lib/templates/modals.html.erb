@@ -17,19 +17,20 @@
                   <th>#</th>
                   <th>name</th>
                   <th>type</th>
-                  <th>class_name</th>
+                  <th>associated class</th>
                 </tr>
               </thead>
               <tbody>
-                <% model.reflections.each_with_index do |r, index| %>
-                  <% name = r[0] %>
+                <% model.reflections.each_with_index do |(name, data), index| %>
                   <tr>
                     <th><%= index + 1 %></th>
-                    <td><%= name.camelize %></td>
-                    <td><%= model.reflections[name].macro %></td>
+                    <td><%= name %></td>
                     <td>
-                      <%= model.reflections[name].options[:class_name] %>
-                      <%= ", through: #{model.reflections[name].options[:through].to_s.capitalize}" if model.reflections[name].options[:through] %>
+                      <%= data.macro %>
+                      <%= "<br>through: #{data.options[:through]}" if data.options[:through] %>
+                    </td>
+                    <td>
+                      <%= data.options[:class_name] || name.camelize.singularize %>
                     </td>
                   </tr>
                 <% end %>
