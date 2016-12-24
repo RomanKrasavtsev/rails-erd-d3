@@ -2,11 +2,25 @@
   $(".visible").click(function() {
     var klass = $(this).attr("id");
 
-    if ($(this).prop("checked")){
-      $("." + klass).show();
+    if ($(this).prop("checked")) {
+      $(document.getElementsByClassName(klass)).show();
     }
     else {
-      $("." + klass).hide();
+      $(document.getElementsByClassName(klass)).hide();
+    }
+  });
+
+  $("#check-all").click(function() {
+    if($(this).prop("checked")) {
+      $(".visible").each(function() {
+        $(this).prop("checked", false);
+        $(this).click();
+      });
+    } else {
+      $(".visible").each(function() {
+        $(this).prop("checked", true);
+        $(this).click();
+      });
     }
   });
 
