@@ -15,17 +15,17 @@
     .attr('width', width)
     .style('background', 'white');
 
-  svg.append("defs")
-    .append("marker")
-      .attr("id", "arrow")
-      .attr("viewBox", "0 -5 10 10")
-      .attr("refX", 32)
-      .attr("refY", 0)
-      .attr("markerWidth", 7)
-      .attr("markerHeight", 7)
-      .attr("orient", "auto")
-    .append("svg:path")
-      .attr("d", "M0,-5L10,0L0,5");
+  svg.append('defs')
+    .append('marker')
+      .attr('id', 'arrow')
+      .attr('viewBox', '0 -5 10 10')
+      .attr('refX', 32)
+      .attr('refY', 0)
+      .attr('markerWidth', 7)
+      .attr('markerHeight', 7)
+      .attr('orient', 'auto')
+    .append('svg:path')
+      .attr('d', 'M0,-5L10,0L0,5');
 
   var simulation = d3.forceSimulation()
     .force('link', d3.forceLink().id(function(d) { return d.index }))
@@ -43,7 +43,8 @@
     .append('line')
     .attr('class', function(d, i) { return data.nodes[d.source].label + ' ' + data.nodes[d.target].label })
     .attr('stroke', function(d) { return colorScale(d.color) })
-    .attr('marker-end', 'url(#arrow)');;
+    .attr('stroke-width', 2)
+    .attr('marker-end', 'url(#arrow)');
 
   var node = svg.selectAll('.node')
     .data(data.nodes)
