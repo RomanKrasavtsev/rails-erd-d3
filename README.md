@@ -62,33 +62,6 @@ function zoomed() {
     + ")"
   );
   ```
-- Add arrows
-```
-svg.append("defs").append("marker")
-  .attr("id", "arrow")
-  .attr("viewBox", "0 -5 10 10")
-  .attr("refX", 32)
-  .attr("refY", 0)
-  .attr("markerWidth", 7)
-  .attr("markerHeight", 7)
-  .attr("orient", "auto")
-.append("svg:path")
-  .attr("d", "M0,-5L10,0L0,5");
-
-var link = svg.append('g')
-  .attr("marker-end", "url(#arrow)");
-```
-- Add
-```
-var link = svg.append('g')
-  .attr('stroke-width', 2)
-```
-- Add
-```
-node.append('circle')
-  .attr('stroke', 'white')
-  .attr('stroke-width', 3)
-```
 - Freeze
   - On
     ```
@@ -105,14 +78,6 @@ node.append('circle')
 - Add tests
   - ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 - Sort nodes by label
-- Check associations
-    - [X] belongs_to
-    - [X] has_one
-    - [x] has_many
-    - has_many :through
-    - has_one :through
-    - has_and_belongs_to_many
-    - Polymorphic associations
 - Safe as jpg, png
 - Dependent destroy
 
