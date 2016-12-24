@@ -77,7 +77,10 @@ function zoomed() {
 - Add link to another model in model window
 - Add tests
   - ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
-- Sort nodes by label
+- Sort by:
+  - number of connections
+  - number of entries in the table
+- Show table structure on the diagram
 - Safe as jpg, png
 - Dependent destroy
 
