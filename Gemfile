@@ -4,6 +4,10 @@ source 'https://rubygems.org'
 gemspec
 
 group :test do
+  gem "rails"
   gem "activerecord"
   gem "sqlite3"
+  gem "rspec"
+  gem "capybara"
+  gem "poltergeist"
 end
