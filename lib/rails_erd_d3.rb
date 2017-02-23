@@ -94,33 +94,18 @@ class RailsErdD3
   private
 
   def self.get_head
-    content = File.read(
-      File.expand_path(
-        "templates/head.html",
-        File.dirname(__FILE__)
-      )
-    )
+    read_file("templates/head.html")
   end
 
   def self.get_nav
-    content = File.read(
-      File.expand_path(
-        "templates/nav.html",
-        File.dirname(__FILE__)
-      )
-    )
+    read_file("templates/nav.html")
   end
 
   def self.get_d3
     puts "Generating JS..."
 
     content = ERB.new(
-      File.read(
-        File.expand_path(
-          "templates/d3.html.erb",
-          File.dirname(__FILE__)
-        )
-      )
+      read_file("templates/d3.html.erb")
     ).result(binding)
 
     puts "JS was successfully generated."
@@ -128,27 +113,23 @@ class RailsErdD3
   end
 
   def self.get_js
-    content = File.read(
-      File.expand_path(
-        "templates/js.html",
-        File.dirname(__FILE__)
-      )
-    )
+    read_file("templates/js.html")
   end
 
   def self.get_modals
     puts "Generating modals..."
 
     content = ERB.new(
-      File.read(
-        File.expand_path(
-          "templates/modals.html.erb",
-          File.dirname(__FILE__)
-        )
-      )
+      read_file("templates/modals.html.erb")
     ).result(binding)
 
     puts "Modals were successfully generated."
     content
+  end
+
+  def self.read_file(path)
+    File.read(
+      File.expand_path(path, File.dirname(__FILE__))
+    )
   end
 end
