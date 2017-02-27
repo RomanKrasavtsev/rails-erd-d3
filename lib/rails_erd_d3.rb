@@ -43,7 +43,7 @@ class RailsErdD3
     nodes = []
     links = []
     @@models.each do |model|
-      nodes << { table_name: model.table_name, label: model.name, r: 10 }
+      nodes << { table_name: model.table_name, label: model.name, r: 20 }
 
       puts " - #{model.name}"
       model.reflections.each do |name, reflection|
@@ -58,9 +58,10 @@ class RailsErdD3
             color:  ASSOCIATIONS.index(association)
           }
 
-          nodes.each_with_index { |node, index| nodes[index][:r] += 5 if node[:table_name] == reflection.table_name }
+          nodes.each_with_index { |node, index| nodes[index][:r] += 2 if node[:table_name] == reflection.table_name }
         rescue
-          puts "   # Please ensure that association #{name} sets properly!"
+          message = "   # Please ensure that association #{name} sets properly!"
+          puts "\e[31m#{message}\e[0m"
           next
         end
       end
