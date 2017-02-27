@@ -12,24 +12,15 @@ Create entity–relationship diagram with D3.js for your Rails application.
 [https://romankrasavtsev.github.io/rails-erd-d3/](https://romankrasavtsev.github.io/rails-erd-d3/)
 
 ## Features
-Rails-ERD-D3 contains the following functionality:
+Rails-ERD-D3 gem contains the following functionality:
 
-### View models and their associations
-![Models](https://github.com/RomanKrasavtsev/rails-erd-d3/raw/master/images/models.png)
-
-### View associations
-![Associations](https://github.com/RomanKrasavtsev/rails-erd-d3/raw/master/images/associations.png)
-
-### View table structure
-![Table structure](https://github.com/RomanKrasavtsev/rails-erd-d3/raw/master/images/table_structure.png)
-
-### Filter where you could hide any models
-![Filter](https://github.com/RomanKrasavtsev/rails-erd-d3/raw/master/images/preferences.png)
-
-### Rotate models
-
-### Zoom in and zoom out
-
+ - View models
+ - View associations
+ - View table structure
+ - Filter where you could hide any models
+ - Zoom in and zoom out
+ - Rotate models
+ 
 ## Installation
 
 Add these lines to your application's Gemfile:
