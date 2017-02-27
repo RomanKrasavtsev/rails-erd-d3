@@ -15,6 +15,8 @@
     .attr('width', width)
     .style('background', 'white');
 
+  svg = svg.call(d3.zoom().on("zoom", zoomed)).append("g");
+
   svg.append('defs')
     .append('marker')
       .attr('id', 'arrow')
@@ -107,5 +109,15 @@
     if (!d3.event.active) simulation.alphaTarget(0);
     d.fx = null;
     d.fy = null;
+  }
+
+  function zoomed() {
+    svg.attr("transform",
+      "translate("
+      + d3.event.transform.x + ","
+      + d3.event.transform.y + ")"
+      + " scale(" + d3.event.transform.k
+      + ")"
+    );
   }
 </script>
