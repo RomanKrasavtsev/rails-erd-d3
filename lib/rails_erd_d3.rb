@@ -49,6 +49,11 @@ class RailsErdD3
       model.reflections.each do |name, reflection|
         next if reflection.options[:polymorphic]
 
+        unless models_list[reflection.table_name]
+          puts "Model does not exist #{reflection.class_name]}!"
+          next
+        end
+
         association = reflection.macro.to_s + (reflection.options[:through] ? "_through" : "")
 
         links << {
