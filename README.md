@@ -12,20 +12,15 @@ Create entity–relationship diagram with D3.js for your Rails application.
 [https://romankrasavtsev.github.io/rails-erd-d3/](https://romankrasavtsev.github.io/rails-erd-d3/)
 
 ## Features
-Rails-ERD-D3 contains the following functionality:
+Rails-ERD-D3 gem contains the following functionality:
 
-###View models and their associations
-![Models](https://github.com/RomanKrasavtsev/rails-erd-d3/raw/master/images/models.png)
-
-###Preferences where you could hide any models
-![Preferences](https://github.com/RomanKrasavtsev/rails-erd-d3/raw/master/images/preferences.png)
-
-###View associations
-![Associations](https://github.com/RomanKrasavtsev/rails-erd-d3/raw/master/images/associations.png)
-
-###View table structure
-![Table structure](https://github.com/RomanKrasavtsev/rails-erd-d3/raw/master/images/table_structure.png)
-
+ - View models
+ - View associations
+ - View table structure
+ - Filter where you could hide any models
+ - Zoom in and zoom out
+ - Rotate models
+ 
 ## Installation
 
 Add these lines to your application's Gemfile:
@@ -47,21 +42,6 @@ $ bundle exec rails-erd-d3
 ```
 
 ## Todo
-- Add zoom
-  ```
-// https://jsfiddle.net/owen_rodda/55zk55ut/16/
-var svg = d3.select('#erd')
-  .call(d3.zoom().on("zoom", zoomed))
-
-function zoomed() {
-  svg.attr("transform",
-    "translate("
-    + d3.event.transform.x + ","
-    + d3.event.transform.y + ")"
-    + " scale(" + d3.event.transform.k
-    + ")"
-  );
-  ```
 - Freeze
   - On
     ```
