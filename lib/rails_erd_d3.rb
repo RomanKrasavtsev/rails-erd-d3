@@ -52,7 +52,7 @@ class RailsErdD3
         association = reflection.macro.to_s + (reflection.options[:through] ? "_through" : "")
 
         links << {
-          source: models_list[model.name],
+          source: models_list[model.table_name],
           target: models_list[reflection.table_name],
           color:  ASSOCIATIONS.index(association)
         }
