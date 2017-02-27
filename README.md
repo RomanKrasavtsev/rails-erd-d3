@@ -47,21 +47,6 @@ $ bundle exec rails-erd-d3
 ```
 
 ## Todo
-- Add zoom
-  ```
-// https://jsfiddle.net/owen_rodda/55zk55ut/16/
-var svg = d3.select('#erd')
-  .call(d3.zoom().on("zoom", zoomed))
-
-function zoomed() {
-  svg.attr("transform",
-    "translate("
-    + d3.event.transform.x + ","
-    + d3.event.transform.y + ")"
-    + " scale(" + d3.event.transform.k
-    + ")"
-  );
-  ```
 - Freeze
   - On
     ```
