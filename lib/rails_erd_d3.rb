@@ -50,13 +50,12 @@ class RailsErdD3
         next if reflection.options[:polymorphic]
 
         targeted_model = name
-        association = reflection.macro.to_s + (refl_data.options[:through] ? "_through" : "")
-        color_index = ASSOCIATIONS.index(association)
+        association = reflection.macro.to_s + (reflection.options[:through] ? "_through" : "")
 
         links << {
           source: models_list[model.name],
           target: models_list[targeted_model],
-          color:  color_index
+          color:  ASSOCIATIONS.index(association)
         }
       end
     end
