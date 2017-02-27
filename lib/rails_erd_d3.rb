@@ -50,7 +50,7 @@ class RailsErdD3
         next if reflection.options[:polymorphic]
 
         unless models_list[reflection.table_name]
-          puts "Model does not exist #{reflection.class_name]}!"
+          puts "Model does not exist #{reflection.class_name}!"
           next
         end
 
