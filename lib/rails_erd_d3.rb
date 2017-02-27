@@ -58,7 +58,7 @@ class RailsErdD3
             color:  ASSOCIATIONS.index(association)
           }
 
-          nodes.select { |node| node[:table_name] == model.table_name }.each_with_index do |(table, label, r), index|
+          nodes.select { |node| node[:table_name] == reflection.table_name }.each_with_index do |(table, label, r), index|
             nodes[index][:r] += 5
           end
         rescue
