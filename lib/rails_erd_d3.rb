@@ -49,7 +49,7 @@ class RailsErdD3
       model.reflections.each do |name, reflection|
         next if reflection.options[:polymorphic]
 
-        targeted_model = name
+        targeted_model = reflection.class_name
         association = reflection.macro.to_s + (reflection.options[:through] ? "_through" : "")
 
         links << {
