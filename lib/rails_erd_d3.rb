@@ -35,7 +35,7 @@ class RailsErdD3
 
     models_list = {}
     @@models.each_with_index do |model, index|
-      models_list[model.model_name.plural.capitalize] = index
+      models_list[model.name] = index
     end
 
     puts "Generating data..."
@@ -46,19 +46,15 @@ class RailsErdD3
       nodes << { label: model.name, r: 30 }
 
       puts " - #{model.name}"
-      model.reflections.each do |refl_name, refl_data|
-        next if refl_data.options[:polymorphic]
+      model.reflections.each do |name, reflection|
+        next if reflection.options[:polymorphic]
 
-        refl_model = (refl_data.options[:class_name] || refl_name).to_s.underscore
-        association = refl_data.macro.to_s + (refl_data.options[:through] ? "_through" : "")
+        targeted_model = name
+        association = reflection.macro.to_s + (refl_data.options[:through] ? "_through" : "")
         color_index = ASSOCIATIONS.index(association)
 
-        targeted_model = refl_model
-        targeted_model = targeted_model[1..-1] if targeted_model.starts_with?("/")
-        targeted_model = targeted_model.tr("/", "_").pluralize.capitalize
-
         links << {
-          source: models_list[model.model_name.plural.capitalize],
+          source: models_list[model.name],
           target: models_list[targeted_model],
           color:  color_index
         }
