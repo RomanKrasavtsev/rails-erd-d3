@@ -57,8 +57,6 @@ class RailsErdD3
             target: models_list[reflection.table_name],
             color:  ASSOCIATIONS.index(association)
           }
-
-          nodes.each_with_index { |node, index| nodes[index][:r] += 1 if node[:table_name] == reflection.table_name }
         rescue
           message = "   # Please ensure that association #{name} sets properly!"
           puts "\e[31m#{message}\e[0m"
