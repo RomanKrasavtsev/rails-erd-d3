@@ -35,7 +35,7 @@ class RailsErdD3
 
     models_list = {}
     @@models.each_with_index do |model, index|
-      models_list[model.name] = index
+      models_list[model.table_name] = index
     end
 
     puts "Generating data..."
@@ -49,12 +49,11 @@ class RailsErdD3
       model.reflections.each do |name, reflection|
         next if reflection.options[:polymorphic]
 
-        targeted_model = reflection.class_name
         association = reflection.macro.to_s + (reflection.options[:through] ? "_through" : "")
 
         links << {
           source: models_list[model.name],
-          target: models_list[targeted_model],
+          target: models_list[reflection.table_name],
           color:  ASSOCIATIONS.index(association)
         }
       end
