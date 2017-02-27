@@ -43,24 +43,24 @@ class RailsErdD3
     nodes = []
     links = []
     @@models.each do |model|
-      nodes << { label: model.name, r: 30 }
+      nodes << { table_name: model.table_name, label: model.name, r: 30 }
 
       puts " - #{model.name}"
       model.reflections.each do |name, reflection|
         next if reflection.options[:polymorphic]
 
-        unless models_list[reflection.table_name]
-          puts "Model does not exist #{reflection.class_name}!"
+        begin
+          association = reflection.macro.to_s + (reflection.options[:through] ? "_through" : "")
+
+          links << {
+            source: models_list[model.table_name],
+            target: models_list[reflection.table_name],
+            color:  ASSOCIATIONS.index(association)
+          }
+        rescue
+          puts "Please ensure that association #{name} sets properly!"
           next
         end
-
-        association = reflection.macro.to_s + (reflection.options[:through] ? "_through" : "")
-
-        links << {
-          source: models_list[model.table_name],
-          target: models_list[reflection.table_name],
-          color:  ASSOCIATIONS.index(association)
-        }
       end
     end
     puts "Data were successfully generated."

@@ -53,7 +53,7 @@
     .classed('node', true)
     .style('cursor', 'pointer')
     .attr('data-toggle', 'modal')
-    .attr('data-target', function(d) { return '#' + d.label })
+    .attr('data-target', function(d) { return '#' + d.table_name })
     .attr('class', function(d) { return d.label })
     .call(d3.drag()
       .on('start', dragstarted)
