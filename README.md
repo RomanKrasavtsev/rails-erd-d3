@@ -42,6 +42,8 @@ $ bundle exec rails-erd-d3
 ```
 
 ## Todo
+- Add table name
+- Add polymorphic links
 - Freeze
   - On
     ```
